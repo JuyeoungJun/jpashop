@@ -8,7 +8,7 @@ import javax.persistence.*
 @DiscriminatorColumn(name = "dtype")
 open abstract class Item(
     name: String? = null,
-    price: Int? = null,
+    price: Int = 0,
     stockQuantity: Int = 0
 ) {
     @Id
@@ -17,7 +17,7 @@ open abstract class Item(
     var id: Long? = null
 
     var name: String? = name
-    var price: Int? = price
+    var price: Int = price
     var stockQuantity: Int = stockQuantity
 
     @ManyToMany(mappedBy = "items")

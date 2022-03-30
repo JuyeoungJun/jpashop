@@ -46,4 +46,31 @@ class Order(
         orderItems.add(orderItem)
         orderItem.order = this
     }
+
+    fun cancel() {
+        if (delivery?.status == DeliveryStatus.COMP) {
+            throw IllegalStateException("이미 배송완료된 상품은 취소가 불가능합니다.")
+        }
+
+        this.status = OrderStatus.CANCEL
+        orderItems.forEach {
+            it.cancel()
+        }
+    }
+
+    fun getTotalPrice(): Int = orderItems.sumOf { it.getTotalPrice() }
+
+    companion object {
+        fun createOrder(member: Member?, delivery: Delivery?, vararg orderItems: OrderItem): Order =
+            with(Order()) {
+                this.member = member
+                this.delivery = delivery
+                orderItems.forEach {
+                    this.addOrderItem(it)
+                }
+                this.status = OrderStatus.ORDER
+                this.orderDate = LocalDateTime.now()
+                return this
+            }
+    }
 }

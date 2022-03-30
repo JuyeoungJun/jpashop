@@ -9,7 +9,7 @@ class MemberRepository(private val entityManager: EntityManager) {
 
     fun save(member: Member) = entityManager.persist(member)
 
-    fun findOne(id: Long): Member = entityManager.find(Member::class.java, id)
+    fun findOne(id: Long): Member? = entityManager.find(Member::class.java, id)
 
     fun findAll(): List<Member> = entityManager.createQuery("select m from Member m", Member::class.java).resultList
 
