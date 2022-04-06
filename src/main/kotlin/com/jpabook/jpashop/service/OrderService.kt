@@ -3,6 +3,7 @@ package com.jpabook.jpashop.service
 import com.jpabook.jpashop.domain.Delivery
 import com.jpabook.jpashop.domain.Order
 import com.jpabook.jpashop.domain.OrderItem
+import com.jpabook.jpashop.domain.OrderSearch
 import com.jpabook.jpashop.repository.ItemRepository
 import com.jpabook.jpashop.repository.MemberRepository
 import com.jpabook.jpashop.repository.OrderRepository
@@ -52,5 +53,5 @@ class OrderService(private val orderRepository: OrderRepository, private val mem
     /**
      * 주문 검색
      */
-//    fun findOrders(orderSearch: OrderSerach): List<Order> = orderRepository.findAll(orderSearch)
+    fun findOrders(orderSearch: OrderSearch): List<Order> = orderRepository.findAllByCriteria(orderSearch)
 }

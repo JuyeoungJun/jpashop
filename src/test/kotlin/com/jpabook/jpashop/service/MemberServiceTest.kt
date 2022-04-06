@@ -29,6 +29,7 @@ class MemberServiceTest {
     }
 
     @Test
+    @Transactional
     fun `중복 회원 예외`() {
         // given
         val member1 = Member()

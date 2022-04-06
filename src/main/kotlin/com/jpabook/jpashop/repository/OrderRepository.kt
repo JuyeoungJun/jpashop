@@ -29,7 +29,7 @@ class OrderRepository(private val entityManager: EntityManager) {
         .resultList
 
 
-    fun findAllByCriteria(orderSearch: OrderSearch): MutableList<Order>? {
+    fun findAllByCriteria(orderSearch: OrderSearch): MutableList<Order> {
         val criteriaBuilder = entityManager.criteriaBuilder
         val createQuery = criteriaBuilder.createQuery(Order::class.java)
         val o = createQuery.from(Order::class.java)
