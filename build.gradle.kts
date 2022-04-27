@@ -12,6 +12,14 @@ allOpen {
     annotation("javax.persistence.Entity")
 }
 
+buildscript {
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-allopen:$2.6.4")
+    }
+}
+
+
+
 noArg {
     annotation("javax.persistence.Entity")
 }

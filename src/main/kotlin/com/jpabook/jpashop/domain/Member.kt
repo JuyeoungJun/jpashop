@@ -1,5 +1,6 @@
 package com.jpabook.jpashop.domain
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 import javax.validation.constraints.NotEmpty
 
@@ -18,6 +19,7 @@ class Member(
     @Embedded
     var address: Address? = address
 
+    @JsonIgnore
     @OneToMany(mappedBy = "member")
     val orders: MutableList<Order> = mutableListOf()
 

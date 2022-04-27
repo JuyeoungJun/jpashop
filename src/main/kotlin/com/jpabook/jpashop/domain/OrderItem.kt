@@ -1,5 +1,6 @@
 package com.jpabook.jpashop.domain
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import lombok.AccessLevel
 import lombok.NoArgsConstructor
 import javax.persistence.*
@@ -20,6 +21,7 @@ class OrderItem(
     @JoinColumn(name = "item_id")
     var item: Item? = item
 
+    @JsonIgnore
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "order_id")
     var order: Order? = order
